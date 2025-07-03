@@ -49,6 +49,7 @@ Making a GET request in Python is straightforward, especially if you're using th
 
    url = 'https://api.example.com/data'  # Replace with the URL you want to request
 
+   # url = 'https://api.binance.com//api/v3/depth?symbol=BTCUSDT&limit=5'  # Replace with the URL you want to request
    # Sending GET request
    response = requests.get(url)
 
