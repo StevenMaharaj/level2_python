@@ -111,6 +111,473 @@ ul, ol {
 ;">
 <h2 id="%F0%9F%A7%AA-what-is-pytest"><img class="emoji" draggable="false" alt="🧪" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f9ea.svg" data-marp-twemoji=""/> What is pytest?</h2>
 <p>pytest is a powerful Python testing tool used to write simple and scalable test cases.</p>
+<h2 id="installation">Installation</h2>
+<p>With pip</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>pip install pytest pytest-cov
+</code></pre>
+<p>with uv</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>uv add pytest pytest-cov
+</code></pre>
+<footer>Coder Trader | 28/07/25</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-class="invert" data-footer="Coder Trader | 28/07/25" data-theme="uncover" data-style="body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+" lang="en-US" class="invert" style="--class:invert;--footer:Coder Trader | 28/07/25;--theme:uncover;--style:body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+;">
+<h1 id="create-code-to-test">Create code to test</h1>
+<p>We will create a calculator app in <code>calculator.py</code></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">a, b</span>):
+    <span class="hljs-keyword">return</span> a + b
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">divide</span>(<span class="hljs-params">a, b</span>):
+    <span class="hljs-keyword">if</span> b == <span class="hljs-number">0</span>:
+        <span class="hljs-keyword">raise</span> ValueError(<span class="hljs-string">&quot;Cannot divide by zero.&quot;</span>)
+    <span class="hljs-keyword">return</span> a / b
+</code></pre>
+<footer>Coder Trader | 28/07/25</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-class="invert" data-footer="Coder Trader | 28/07/25" data-theme="uncover" data-style="body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+" lang="en-US" class="invert" style="--class:invert;--footer:Coder Trader | 28/07/25;--theme:uncover;--style:body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+;">
+<h2 id="set-up-tests">Set up tests</h2>
+<p>We will set up the testing folder <code>tests</code> and put the calculator test here <code>tests/test_calculator.py</code></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">from</span> app.calculator <span class="hljs-keyword">import</span> add, divide
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_add</span>():
+    <span class="hljs-keyword">assert</span> add(<span class="hljs-number">3</span>, <span class="hljs-number">4</span>) == <span class="hljs-number">7</span>
+    <span class="hljs-keyword">assert</span> add(-<span class="hljs-number">1</span>, <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_divide</span>():
+    <span class="hljs-keyword">assert</span> divide(<span class="hljs-number">10</span>, <span class="hljs-number">2</span>) == <span class="hljs-number">5</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_divide_by_zero</span>():
+    <span class="hljs-keyword">import</span> pytest
+    <span class="hljs-keyword">with</span> pytest.raises(ValueError):
+        divide(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>)
+</code></pre>
+<p>you can run all the tests by running the command</p>
+<ul>
+<li>
+<p><code>pytest</code></p>
+</li>
+<li>
+<p>you can drill down to the specific test <code>pytest tests/test_calculator.py::test_add</code></p>
+</li>
+<li>
+<p>To run an specific test function<code>pytest -k &quot;test_add&quot;</code></p>
+</li>
+</ul>
+<footer>Coder Trader | 28/07/25</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-class="invert" data-footer="Coder Trader | 28/07/25" data-theme="uncover" data-style="body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+" lang="en-US" class="invert" style="--class:invert;--footer:Coder Trader | 28/07/25;--theme:uncover;--style:body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+;">
+<h1 id="fixtures">Fixtures</h1>
+<p>A fixture in pytest is a reusable piece of setup code that provides data, resources, or configuration for tests. It helps you avoid repeating setup logic and makes your tests cleaner and more modular.</p>
+<ul>
+<li>
+<p><code>@pytest.fixture</code> marks a function as a fixture.</p>
+</li>
+<li>
+<p>It can be automatically injected into tests that request it by name.</p>
+</li>
+</ul>
+<footer>Coder Trader | 28/07/25</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-class="invert" data-footer="Coder Trader | 28/07/25" data-theme="uncover" data-style="body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+" lang="en-US" class="invert" style="--class:invert;--footer:Coder Trader | 28/07/25;--theme:uncover;--style:body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+;">
+<h2 id="using-conftestpy-for-fixtures">Using conftest.py for Fixtures</h2>
+<p>We will make a file called <code>tests/conftest.py</code></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">import</span> pytest
+
+<span class="hljs-meta">@pytest.fixture</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">numbers</span>():
+    <span class="hljs-keyword">return</span> (<span class="hljs-number">6</span>, <span class="hljs-number">3</span>)
+</code></pre>
+<p>Use this fixture in your test:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_add_with_fixture</span>(<span class="hljs-params">numbers</span>):
+    <span class="hljs-keyword">from</span> app.calculator <span class="hljs-keyword">import</span> add
+    a, b = numbers
+    <span class="hljs-keyword">assert</span> add(a, b) == <span class="hljs-number">9</span>
+</code></pre>
+<footer>Coder Trader | 28/07/25</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-class="invert" data-footer="Coder Trader | 28/07/25" data-theme="uncover" data-style="body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+" lang="en-US" class="invert" style="--class:invert;--footer:Coder Trader | 28/07/25;--theme:uncover;--style:body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+;">
+<h2 id="coverage">Coverage</h2>
+<p><img class="emoji" draggable="false" alt="📊" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4ca.svg" data-marp-twemoji=""/> What is Coverage in Testing?</p>
+<ul>
+<li>Coverage (short for code coverage) is a metric that measures how much of your source code is executed when you run your tests.</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> Why It's Useful</p>
+<ul>
+<li>
+<p>Identifies untested code (e.g., functions or branches that never run in tests)</p>
+</li>
+<li>
+<p>Helps ensure important logic paths are tested</p>
+</li>
+<li>
+<p>Encourages writing more comprehensive test suites</p>
+</li>
+</ul>
+<p><img class="emoji" draggable="false" alt="🔍" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f50d.svg" data-marp-twemoji=""/> Common Types of Coverage</p>
+<ul>
+<li>Line coverage	Are all lines of code executed?</li>
+<li>Branch coverage	Are all if/else, try/except branches taken?</li>
+<li>Function coverage	Are all functions or methods called?</li>
+</ul>
+<footer>Coder Trader | 28/07/25</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-class="invert" data-footer="Coder Trader | 28/07/25" data-theme="uncover" data-style="body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+" lang="en-US" class="invert" style="--class:invert;--footer:Coder Trader | 28/07/25;--theme:uncover;--style:body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+;">
+<h2 id="%F0%9F%9B%A0-example-using-pytest-cov"><img class="emoji" draggable="false" alt="🛠" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f6e0.svg" data-marp-twemoji=""/> Example (using pytest-cov)</h2>
+<p><code>pytest --cov=your_module tests/</code><br />
+Gives you output like:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Name              Stmts   Miss  Cover
+-------------------------------------
+your_module.py       20      2    90%
+</code></pre>
+<p>This means 18 out of 20 lines were executed during the test run — 90% coverage.</p>
+<footer>Coder Trader | 28/07/25</footer>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-class="invert" data-footer="Coder Trader | 28/07/25" data-theme="uncover" data-style="body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+" lang="en-US" class="invert" style="--class:invert;--footer:Coder Trader | 28/07/25;--theme:uncover;--style:body {
+  background-color: #2E3440; /* Dark pastel background */
+  color:rgb(65, 68, 71); /* Light pastel text */
+}
+h1, h2, h3 {
+  font-size: 25px; /* Adjust as needed */
+  color: #88C0D0; /* Soft pastel cyan for headers */
+}
+p {
+  font-size: 15px; /* Adjust as needed */
+  color:rgb(205, 209, 218); /* Light pastel text */
+}
+a {
+  color: #A3BE8C; /* Pastel green for links */
+}
+code.language-python {
+  font-size: 15px; /* Adjust as needed */
+  background-color: #3B4252; /* Slightly darker for code blocks */
+  color: #D08770; /* Muted pastel orange for code text */
+}
+ul, ol {
+  font-size: 15px; /* Adjust as needed */
+  color: rgb(205,209,218); /* Light pastel text */
+}
+;">
+<h1 id="calculator-example">Calculator example</h1>
+<p><code>pytest --cov=app tests/</code></p>
+<p><em>Optional</em></p>
+<ul>
+<li>Make a pytest.ini file</li>
+</ul>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>[pytest]
+addopts = --cov=app --cov-report=term-missing
+</code></pre>
+<p>then just run <code>pytest</code></p>
 <footer>Coder Trader | 28/07/25</footer>
 </section>
 <script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver(((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()}))}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame((()=>{t.style.display=""})))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=Symbol();let l;const c="marpitSVGPolyfill:setZoomFactor,",d=Symbol(),h=Symbol();const g=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[u]:[],i={then:e=>(t?(async()=>{if(void 0===l){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise((t=>{i.addEventListener("load",(()=>t()))}));i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),l=e.getImageData(5,5,1,1).data[3]<128}return l})().then((t=>{null==e||e(t?[u]:[])})):null==e||e([]),i)};return Object.assign(e,i)};let p,m;function u(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[h]||(Object.defineProperty(window,h,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",(({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(c)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(m=i)}}catch(t){console.error(t)}})));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||m||t.currentScale||1;p!==a&&(p=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}})),!1!==n&&Array.from(e.querySelectorAll("iframe"),(({contentWindow:t})=>{null==t||t.postMessage(`${c}${n}`,"null"===window.origin?"*":window.origin)}))}function v({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[d])return t[d];let e=!0;const i=()=>{e=!1,delete t[d]};Object.defineProperty(t,d,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await g()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}p=1,m=void 0;const w=Symbol(),b=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[a];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,a=t[n].proto();(o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o))&&a!==HTMLElement?i||customElements.define(s,r(a,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach((t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)})))}window[a]=!0})(e),e[w])return e[w];const i=v({target:e}),n=()=>{i(),delete e[w]},l=Object.assign(n,{cleanup:n,update:()=>b(e)});return Object.defineProperty(e,w,{configurable:!0,value:l}),l},y=document.currentScript;b(y?y.getRootNode():document)}();
